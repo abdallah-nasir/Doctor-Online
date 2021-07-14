@@ -12,6 +12,8 @@ def products(request):
     return render(request,"products.html")
 def about(request):
     return render(request,"about.html")
+def bill(request):
+    return render(request,"bill.html")
 def register_users(request):
     if request.user.is_authenticated:
         return redirect(reverse("home:home")) 
