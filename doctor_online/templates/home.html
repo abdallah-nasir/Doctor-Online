@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container mt-5">
+    {% if doctor %}
+    <h2>My Clinics</h2>
+    <div class="row">
+        {% for i in clinics %}
+        <div class="col col-lg-4 mt-5">
+        
+        <div class="card" style="width: 20rem;">
+          
+            <div class="card-body">
+              <h5 class="card-title">Clinic Name: {{i.name}}</h5>
+              <p class="card-text">Doctor: {{i.doctor}}</p>
+              
+              <p class="card-text">Opens in :{{i.days}}</p>
+              
+              <a href="{% url 'home:clinic_edit' id=i.id %}" class="btn btn-success">Edit</a>
+              <a href="{% url 'home:clinic_delete' id=i.id %}" class="btn btn-danger">Delete</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+</div>
+{% else %}
+<h2>Available Clinics</h2>
+<div class="row">
+  {% for i in clinics %}
+  <div class="col col-lg-4 mt-5">
+  
+  <div class="card" style="width: 20rem;">
+    
+      <div class="card-body">
+        <h5 class="card-title">Clinic Name: {{i.name}}</h5>
+        <p class="card-text">Doctor: {{i.doctor}}</p>
+        <p class="card-text">Opens in :{{i.days}}</p>
+    
+        <a href="{% url 'home:reserve' id=i.id %}" class="btn btn-primary">Reserve</a>
+        {% for b in reseravtions %}
+        {% if b.clinic.id == i.id %}
+        <a href="{% url 'home:reserve_delete' id=i.id %}" class="btn btn-danger">Delete Reservation</a>
+        {% endif %}
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+    
+</div>
+{% endif %}
+</div>
+
+
+{% endblock %}

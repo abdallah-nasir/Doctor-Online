@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+
+{% block content %} 
+<div class="container">
+
+    <div class="row">
+       
+        <div class="col col-lg-6 offset-2 mt-5 mb-5">
+            <h2 style="text-align:center;">Edit Clinic</h2>
+            <form class="offset-3" method="POST">
+                {% csrf_token %}
+                <div class="form-group ">
+                  <label for="exampleInputEmail1">Name</label>
+                  <input type="text" class="form-control" name="name" value="{{clinic.name}}" id="exampleInputEmail1">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Price</label>
+                  <input type="number" name="price" value="{{clinic.price}}" class="form-control" id="exampleInputPassword1">
+                </div>
+                <label for="exampleInputPassword1">Days</label>
+        
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input type="checkbox"  name="days" value="Saturday" aria-label="Checkbox for following text input">
+                    </div>
+                  </div>
+                  <input type="text" class="form-control"  aria-label="Text input with checkbox" readOnly placeholder="Saturday">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input type="checkbox" name="days" value='Sunday' aria-label="Checkbox for following text input">
+                    </div>
+                  </div>
+                  <input type="text" class="form-control"  aria-label="Text input with checkbox" readOnly placeholder="Sunday">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input type="checkbox" name="days" value="Monday" aria-label="Checkbox for following text input">
+                    </div>
+                  </div>
+                  <input type="text" class="form-control"  aria-label="Text input with checkbox" readOnly placeholder="Monday">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input type="checkbox"  name="days" value="Tuesday" aria-label="Checkbox for following text input">
+                    </div>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Text input with checkbox" readOnly placeholder="Tuesday">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input type="checkbox"  name="days" value="Wednesday" aria-label="Checkbox for following text input">
+                    </div>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Text input with checkbox" readOnly placeholder="Wednesday">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input type="checkbox"  name="days" value="Thursday" aria-label="Checkbox for following text input">
+                    </div>
+                  </div>
+                  <input type="text" class="form-control"  aria-label="Text input with checkbox" readOnly placeholder="Thursday">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input type="checkbox"  name="days" value="Friday" aria-label="Checkbox for following text input">
+                    </div>
+                  </div>
+                  <input type="text" class="form-control"  aria-label="Text input with checkbox" readOnly placeholder="Friday">
+                </div>
+            
+                  <div class="form-group ">
+                    <label for="exampleInputEmail1">Start Time</label>
+                 
+                    <input type="time" class="form-control" value="{{clinic.start_time|date:'H:i'}}" name="start_time" id="exampleInputEmail1">
+                  </div>
+                  <div class="form-group ">
+                    <label for="exampleInputEmail1">End Time</label>
+                    <input type="time" class="form-control" value="{{clinic.end_time|date:'H:i'}}" name="end_time" id="exampleInputEmail1" >
+                  </div>
+               
+                <button type="submit" class="btn btn-primary">Submit</button>
+              
+              </form>
+
+        </div>
+    </div>
+</div>
+
+  
+ {% endblock %}
